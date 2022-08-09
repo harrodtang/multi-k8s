@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector: # select pods with label component: web
+    component: web
+  ports:
+    - port: 3000  # how other objects in cluster will access the pods goverened by this service
+      targetPort: 3000 # ports on governed pods that we are providing access to
